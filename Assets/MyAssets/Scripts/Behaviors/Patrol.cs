@@ -12,16 +12,16 @@ namespace MyAssets.Scripts.Behaviors
         private const float MinDistance = 0.05f;
 
         private readonly Queue<Vector3> _patrolQueue = new();
-        private readonly Enemy _enemy;
+        private readonly Transform _moverTransform;
 
         private readonly Movement _movement;
         
         private Vector3 _currentTarget;
 
-        public Patrol(List<Transform> patrolPoints, Enemy enemy)
+        public Patrol(List<Transform> patrolPoints, Transform moverTransform)
         {
-            _enemy = enemy;
-            _movement = new Movement(enemy.transform, MoveSpeed);
+            _moverTransform = moverTransform;
+            _movement = new Movement();
             
             foreach (var point in patrolPoints)
             {
@@ -48,10 +48,10 @@ namespace MyAssets.Scripts.Behaviors
             if (direction.magnitude <= MinDistance)
                 SwitchPatrolPoint();
         
-            _movement.Move(direction);
+            _movement.Move(direction, _moverTransform.transform, MoveSpeed);
         }
         
-        private Vector3 GetDirectionToPatrolPoint() => _currentTarget - _enemy.transform.position;
+        private Vector3 GetDirectionToPatrolPoint() => _currentTarget - _moverTransform.transform.position;
         
         private void SwitchPatrolPoint()
         {

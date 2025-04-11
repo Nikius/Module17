@@ -558,8 +558,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
         type: 3}
+      propertyPath: idleBehaviorEnumType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
+        type: 3}
       propertyPath: meetReactionBehaviorType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
+        type: 3}
+      propertyPath: meetReactionBehaviorEnumType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7234925645281364989, guid: 507e2f076bf92d845a17d01301b1f460,
         type: 3}
@@ -685,7 +695,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
         type: 3}
+      propertyPath: idleBehaviorEnumType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
+        type: 3}
       propertyPath: meetReactionBehaviorType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
+        type: 3}
+      propertyPath: meetReactionBehaviorEnumType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7234925645281364989, guid: 507e2f076bf92d845a17d01301b1f460,
@@ -944,7 +964,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
         type: 3}
+      propertyPath: idleBehaviorEnumType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
+        type: 3}
       propertyPath: meetReactionBehaviorType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
+        type: 3}
+      propertyPath: meetReactionBehaviorEnumType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7234925645281364989, guid: 507e2f076bf92d845a17d01301b1f460,
@@ -1215,6 +1245,11 @@ PrefabInstance:
     - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
         type: 3}
       propertyPath: meetReactionBehaviorType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
+        type: 3}
+      propertyPath: meetReactionBehaviorEnumType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7234925645281364989, guid: 507e2f076bf92d845a17d01301b1f460,
@@ -1605,8 +1640,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
         type: 3}
+      propertyPath: idleBehaviorEnumType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
+        type: 3}
       propertyPath: meetReactionBehaviorType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152012921546269517, guid: 507e2f076bf92d845a17d01301b1f460,
+        type: 3}
+      propertyPath: meetReactionBehaviorEnumType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7234925645281364989, guid: 507e2f076bf92d845a17d01301b1f460,
         type: 3}

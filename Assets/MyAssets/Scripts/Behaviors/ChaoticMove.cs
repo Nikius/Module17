@@ -10,15 +10,17 @@ namespace MyAssets.Scripts.Behaviors
         private const float MoveDuration = 1f;
         private const float MoveSpeed = 4f;
         private const float Distance = MoveDuration * MoveSpeed;
-        
+
+        private readonly Transform _moverTransform;
         private readonly Movement _movement;
         
         private float _timer;
         private Vector3 _targetPosition;
 
-        public ChaoticMove(Enemy enemy)
+        public ChaoticMove(Transform moverTransform)
         {
-            _movement = new Movement(enemy.transform, MoveSpeed);
+            _moverTransform = moverTransform;
+            _movement = new Movement();
         }
 
         public void Enter()
@@ -52,7 +54,7 @@ namespace MyAssets.Scripts.Behaviors
 
         private void Move()
         {
-            _movement.Move(_targetPosition);
+            _movement.Move(_targetPosition, _moverTransform.transform, MoveSpeed);
         }
     }
 }

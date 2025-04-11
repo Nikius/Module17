@@ -6,27 +6,33 @@ namespace MyAssets.Scripts.Behaviors
 {
     public class SelfDestroy: IBehavior
     {
-        private readonly Enemy _enemy;
+        private readonly GameObject _ownerGameObject;
         private readonly ParticleSystem _blowVFX;
         
-        public SelfDestroy(Enemy enemy, ParticleSystem blowVFX)
+        private bool _isDestroying = false;
+        
+        public SelfDestroy(GameObject ownerGameObject, ParticleSystem blowVFX)
         {
-            _enemy = enemy;
+            _ownerGameObject = ownerGameObject;
             _blowVFX = blowVFX;
         }
         
         public void Update()
         {
+            if (_isDestroying)
+                return;
+            
+            _isDestroying = true;
             _blowVFX.Play();
             Object.Destroy(_blowVFX.gameObject, _blowVFX.main.duration);
-            _enemy.Destroy();
+            Object.Destroy(_ownerGameObject);
         }
         
         public void Enter()
         {
             Debug.Log("SelfDestroy");
             
-            _blowVFX.gameObject.transform.position = _enemy.transform.position;
+            _blowVFX.gameObject.transform.position = _ownerGameObject.transform.position;
         }
     }
 }

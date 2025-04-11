@@ -10,14 +10,14 @@ namespace MyAssets.Scripts.Behaviors
         private const float MoveSpeed = 8f;
         
         private readonly Hero _hero;
-        private readonly Enemy _enemy;
+        private readonly Transform _moverTransform;
         private readonly Movement _movement;
 
-        public RunAway(Hero hero, Enemy enemy)
+        public RunAway(Hero hero, Transform moverTransform)
         {
             _hero = hero;
-            _enemy = enemy;
-            _movement = new Movement(enemy.transform, MoveSpeed);
+            _moverTransform = moverTransform;
+            _movement = new Movement();
         }
         
         public void Enter()
@@ -32,9 +32,9 @@ namespace MyAssets.Scripts.Behaviors
         
         private void Move()
         {
-            Vector3 direction = _enemy.transform.position - _hero.transform.position;
+            Vector3 direction = _moverTransform.transform.position - _hero.transform.position;
             direction.y = 0;
-            _movement.Move(direction);
+            _movement.Move(direction, _moverTransform.transform, MoveSpeed);
         }
     }
 }

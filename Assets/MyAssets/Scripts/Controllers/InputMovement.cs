@@ -9,13 +9,16 @@ namespace MyAssets.Scripts.Controllers
         private const string VerticalAxis = "Vertical";
         private const float MinMove = 0.05f;
         
+        private float _speed = 10f;
+        private float _rotationSpeed = 500f;
+        
         private Movement _movement;
         private Rotation _rotation;
         
         private void Awake()
         {
-            _movement = new Movement(transform, 10);
-            _rotation = new Rotation(transform, 500);
+            _movement = new Movement();
+            _rotation = new Rotation();
         }
 
         private void Update()
@@ -24,8 +27,8 @@ namespace MyAssets.Scripts.Controllers
 
             if (direction.magnitude >= MinMove)
             {
-                _movement.Move(direction);
-                _rotation.RotateTo(direction);
+                _movement.Move(direction, transform, _speed);
+                _rotation.RotateTo(transform, _rotationSpeed, direction);
             }
         }
 

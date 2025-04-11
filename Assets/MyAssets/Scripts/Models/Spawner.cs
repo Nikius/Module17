@@ -23,10 +23,14 @@ namespace MyAssets.Scripts.Models
             {
                 Enemy enemy = Instantiate(_enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
                 
-                _behaviorCreator.SetEnemy(enemy);
-                
-                IBehavior idleBehavior = _behaviorCreator.CreateIdleBehavior(spawnPoint.idleBehaviorType);
-                IBehavior meetReactionBehavior = _behaviorCreator.CreateMeetReactionBehavior(spawnPoint.meetReactionBehaviorType);
+                IBehavior idleBehavior = _behaviorCreator.CreateIdleBehavior(
+                    enemy.gameObject,
+                    spawnPoint.idleBehaviorEnumType
+                );
+                IBehavior meetReactionBehavior = _behaviorCreator.CreateMeetReactionBehavior(
+                    enemy.gameObject,
+                    spawnPoint.meetReactionBehaviorEnumType
+                );
                 
                 enemy.Initialize(idleBehavior, meetReactionBehavior);
             }

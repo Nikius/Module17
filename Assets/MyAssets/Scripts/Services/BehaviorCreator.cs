@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using MyAssets.Scripts.Behaviors;
 using MyAssets.Scripts.Behaviors.Contracts;
-using MyAssets.Scripts.Enums;
 using MyAssets.Scripts.Models;
 using UnityEngine;
 
@@ -13,60 +12,53 @@ namespace MyAssets.Scripts.Services
         [SerializeField] private List<Transform> _patrolPoints;
         [SerializeField] private ParticleSystem _blowVFXPrefab;
         
-        private Enemy _enemy;
-        
-        public void SetEnemy(Enemy enemy)
-        {
-            _enemy = enemy;
-        }
-
-        public IBehavior CreateIdleBehavior(IdleBehaviors behaviorName)
+        public IBehavior CreateIdleBehavior(GameObject ownerGameObject, IdleBehaviorsEnum behaviorEnumName)
         {
             IBehavior behavior = null;
             
-            switch (behaviorName)
+            switch (behaviorEnumName)
             {
-                case IdleBehaviors.Idle:
+                case IdleBehaviorsEnum.Idle:
                     behavior = new Idle();
                     break;
                 
-                case IdleBehaviors.Patrol:
-                    behavior = new Patrol(_patrolPoints, _enemy);
+                case IdleBehaviorsEnum.Patrol:
+                    behavior = new Patrol(_patrolPoints, ownerGameObject.transform);
                     break;
                 
-                case IdleBehaviors.ChaoticMove:
-                    behavior = new ChaoticMove(_enemy);
+                case IdleBehaviorsEnum.ChaoticMove:
+                    behavior = new ChaoticMove(ownerGameObject.transform);
                     break;
                 
                 default:
-                    Debug.LogError($"Behavior {behaviorName.ToString()} not implemented");
+                    Debug.LogError($"Behavior {behaviorEnumName.ToString()} not implemented");
                     break;
             }
             
             return behavior;
         }
         
-        public IBehavior CreateMeetReactionBehavior(MeetReactionBehaviors behaviorName)
+        public IBehavior CreateMeetReactionBehavior(GameObject ownerGameObject, MeetReactionBehaviorsEnum behaviorEnumName)
         {
             IBehavior behavior = null;
             
-            switch (behaviorName)
+            switch (behaviorEnumName)
             {
-                case MeetReactionBehaviors.RunAway:
-                    behavior = new RunAway(_hero, _enemy);
+                case MeetReactionBehaviorsEnum.RunAway:
+                    behavior = new RunAway(_hero, ownerGameObject.transform);
                     break;
                 
-                case MeetReactionBehaviors.Chase:
-                    behavior = new Chase(_hero, _enemy);
+                case MeetReactionBehaviorsEnum.Chase:
+                    behavior = new Chase(_hero, ownerGameObject.transform);
                     break;
 
-                case MeetReactionBehaviors.SelfDestroy:
-                    ParticleSystem blowVFX = Instantiate(_blowVFXPrefab, _enemy.transform.position, Quaternion.identity);
-                    behavior = new SelfDestroy(_enemy, blowVFX);
+                case MeetReactionBehaviorsEnum.SelfDestroy:
+                    ParticleSystem blowVFX = Instantiate(_blowVFXPrefab, ownerGameObject.transform.position, Quaternion.identity);
+                    behavior = new SelfDestroy(ownerGameObject, blowVFX);
                     break;
 
                 default:
-                    Debug.LogError($"Behavior {behaviorName.ToString()} not implemented");
+                    Debug.LogError($"Behavior {behaviorEnumName.ToString()} not implemented");
                     break;
             }
             

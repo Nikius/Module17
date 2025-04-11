@@ -28,24 +28,23 @@ namespace MyAssets.Scripts.Models
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(HeroTag))
+            Hero hero = other.GetComponent<Hero>();
+            
+            if (hero is not null)
                 SetCurrentBehavior(_meetReactionBehavior);
         }
         
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag(HeroTag))
+            Hero hero = other.GetComponent<Hero>();
+            
+            if (hero is not null)
                 SetCurrentBehavior(_idleBehavior);
         }
 
         private void Update()
         {
             _currentBehavior.Update();
-        }
-
-        public void Destroy()
-        {
-            Destroy(gameObject);
         }
     }
 }
